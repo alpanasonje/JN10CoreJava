@@ -20,19 +20,25 @@ public class Account implements Bank {
 	}
 
 	@Override
-	public void deposit(int amount) {
+	public synchronized void deposit(int amount) {
 		if (amount > DEPOSIT_LIMIT)
 			System.out.println("Deposit limit exceeded...");
 		else
+		{
 			balance += amount;
+			System.out.println(amount+" deposited successfully..");
+		}
 	}
 
 	@Override
-	public void withdraw(int amount) {
+	public  void withdraw(int amount) {
 		if (balance - amount < MINIMUM_BALANCE)
 			System.out.println("cannot withdraw");
 		else
+		{
 			balance -= amount;
+			System.out.println(amount+" withdraw successfully..");
+		}
 
 	}
 
