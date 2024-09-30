@@ -10,15 +10,23 @@ public class TreeSetDemo {
 		ts.add("Nashik");
 		ts.add("Mumbai");
 		ts.add("Bangalore");
+		ts.add("Nashik");
 		ts.add("Hyderabad");
 		ts.add("Chennai");
-		ts.add("Nashik");
+		
 		System.out.println("Set "+ts);
 		
 		//Adding User Defined Objects
-		Comparator<Employee> comp=(e2, e1)-> e1.getName().compareTo(e2.getName());
+		Comparator<Employee> comp=(Employee e2, Employee e1)-> {
+				return e1.getName().compareTo(e2.getName());
+			};
+			
+			comp=(e1,e2)-> e1.getId()-e2.getId();
+			
 	
-		//(int)(e1.getSalary()-e2.getSalary());
+		comp=(e1, e2)->(int)(e1.getSalary()-e2.getSalary());
+		
+		comp=(e1,e2) -> e1.getDept().compareTo(e2.getDept());
 		
 		TreeSet<Employee> empSet=new TreeSet<Employee>(comp);
 		empSet.add(new Employee(101, "Amol", 69000, "Sales"));
